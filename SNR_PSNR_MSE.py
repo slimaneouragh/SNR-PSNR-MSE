@@ -11,8 +11,7 @@ import random
 
 # Calculate MSE
 def mse(img, filtred_img):
-    
-# my own method (1)	
+   
 
     sum1 = 0.0
     sum2 = 0.0
@@ -29,10 +28,7 @@ def mse(img, filtred_img):
 
     return mse
 
-# method (2)
 
-#    mse = np.mean((img - filtred_img) ** 2) 
-#    return mse
 
 
 
@@ -40,7 +36,6 @@ def mse(img, filtred_img):
 # Calculate PSNR
 def psnr(img, filtred_img):
     
-# my own method  (1)
 
     sum1 = 0.0
     sum2 = 0.0
@@ -61,16 +56,6 @@ def psnr(img, filtred_img):
     psnr = 20 * log10(max_pixel / sqrt(mse))
     return psnr
 
-# method (2)
-
-    #mse = np.mean((img - filtred_img) ** 2) 
-    #if(mse == 0):  # MSE is zero means no noise is present in the signal .
-                  # Therefore PSNR have no importance.
-    #    return 100
-    #max_pixel = 255.0  # for 8bit integer
-    #psnr = 20 * log10(max_pixel / sqrt(mse))
-    #return psnr
-
 
 
 
@@ -84,20 +69,3 @@ def snr(unnoised,origin):
             som2 = som2 + (unnoised[i][y] - (origin[i][y]))**2
     return 10*log10(som1/som2)
 
-#def snr(img_filtred,img):
-#	mean_img = np.mean(img)
-#	noise = img - img_filtred
-#	mean_noise = np.mean(noise)
-#	noise_deff = noise - mean_noise
-#	var_noise  = np.sum(np.mean(noise_deff**2))
-#
-#	mean_noisy = np.mean(img_filtred)
-#	std_dev = np.std(img_filtred)
-#
-#	if var_noise == 0 :
-#		snr = 100
-#	else:
-#		snr = (np.log10(mean_noisy/std_dev))*20 ## SNR of the image	
-#		#snr = ((mean_img/sqrt(var_noise))) ## SNR of the image	
-#		#snr = np.log10(mean_img / std_dev) ## SNR of the image	
-#	return snr      
